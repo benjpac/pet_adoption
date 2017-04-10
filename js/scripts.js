@@ -9,22 +9,26 @@
 
 petDB = [
   {
+    "petID": 0,
     "petName": "Charlie",
     "petType": "Dog",
     "imageURL": "http://www.doodycalls.com/wp-content/uploads/2017/02/dogrunning.jpg",
     "available": true,
   },
   {
+    "petID": 1,
     "petName": "Rose",
     "petType": "Cat",
     "available": true,
   },
   {
+    "petID": 2,
     "petName": "Max",
     "petType": "Parrot",
     "available": true,
   },
   {
+    "petID": 3,
     "petName": "Bella",
     "petType": "Cat",
     "available": false,
@@ -32,6 +36,7 @@ petDB = [
 ]
 
 function AddAnimal(name, type, imageURL) {
+  this.petID = petDB.length + 1;
   this.petName = name;
   this.petType = type;
   this.available = true;
@@ -39,8 +44,8 @@ function AddAnimal(name, type, imageURL) {
   petDB.push(this);
 }
 
-// var newPet = new AddAnimal("Alice", "Rabbit", "http://elelur.com/data_images/mammals/rabbit/rabbit-06.jpg");
-// console.log(petDB);
+var newPet = new AddAnimal("Alice", "Rabbit", "http://elelur.com/data_images/mammals/rabbit/rabbit-06.jpg");
+console.log(petDB);
 
 // function to split available pets and adopted ones in separate arrays
 function displayAdoptable(checkDB) {
@@ -72,5 +77,10 @@ console.log(adopted(petDB[0]));
 console.log(petDB);
 
 $(document).ready(function() {
+  var separateOnAvailability = displayAdoptable(petDB);
+  // $("#allPets").append($("<div id>" + "#" + petDB[0].petID).append("<h3>" + petDB[0].petName));
+  $("#allPets").append("<div id=" + petDB[0].petID + ">");
+  $("#" + petDB[0].petID).append("<h3>" + petDB[0].petName);
   $("#animal").attr("src",petDB[0].imageURL);
+
 });
