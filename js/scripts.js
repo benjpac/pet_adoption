@@ -31,18 +31,6 @@ petDB = [
   }
 ]
 
-console.log(petDB);
-console.log(petDB[0].image);
-
-// function addAnimal(name, type, imageURL) {
-//   var newPet = Object();
-//   newPet.petName = name;
-//   newPet.petType = type;
-//   newPet.available = true;
-//   newPet.imageURL = imageURL;
-//   petDB.push(newPet);
-// }
-
 function AddAnimal(name, type, imageURL) {
   this.petName = name;
   this.petType = type;
@@ -51,9 +39,38 @@ function AddAnimal(name, type, imageURL) {
   petDB.push(this);
 }
 
-var newPet = new AddAnimal("Alice", "Rabbit", "http://elelur.com/data_images/mammals/rabbit/rabbit-06.jpg");
+// var newPet = new AddAnimal("Alice", "Rabbit", "http://elelur.com/data_images/mammals/rabbit/rabbit-06.jpg");
+// console.log(petDB);
+
+// function to split available pets and adopted ones in separate arrays
+function displayAdoptable(checkDB) {
+  var availablePetDB = [];
+  var notAvailablePetDB = [];
+  for(var i=0;i<petDB.length;i++)
+  {
+    if(checkDB[i].available === true)
+    {
+      availablePetDB.push(checkDB[i]);
+    }
+    else
+    {
+      notAvailablePetDB.push(checkDB[i]);
+    }
+  }
+  return [availablePetDB, notAvailablePetDB]
+  // checkDB[0] = availablePetDB, checkDB[1] = notAvailablePetDB
+}
+
+// console.log(displayAdoptable(petDB));
+
+// function to change petDB.avilable to false
+function adopted(pet) {
+  pet.available = false;
+}
+
+console.log(adopted(petDB[0]));
 console.log(petDB);
 
 $(document).ready(function() {
-  $("#animal").attr("src",petDB[0].image);
+  $("#animal").attr("src",petDB[0].imageURL);
 });
