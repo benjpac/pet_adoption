@@ -9,26 +9,26 @@
 
 petDB = [
   {
-    "petID": 0,
+    "petID": 1,
     "petName": "Charlie",
     "petType": "Dog",
     "imageURL": "http://www.doodycalls.com/wp-content/uploads/2017/02/dogrunning.jpg",
     "available": true,
   },
   {
-    "petID": 1,
+    "petID": 2,
     "petName": "Rose",
     "petType": "Cat",
     "available": true,
   },
   {
-    "petID": 2,
+    "petID": 3,
     "petName": "Max",
     "petType": "Parrot",
     "available": true,
   },
   {
-    "petID": 3,
+    "petID": 4,
     "petName": "Bella",
     "petType": "Cat",
     "available": false,
@@ -73,14 +73,26 @@ function adopted(pet) {
   pet.available = false;
 }
 
-console.log(adopted(petDB[0]));
-console.log(petDB);
+// console.log(adopted(petDB[0]));
+// console.log(petDB);
 
 $(document).ready(function() {
   var separateOnAvailability = displayAdoptable(petDB);
-  // $("#allPets").append($("<div id>" + "#" + petDB[0].petID).append("<h3>" + petDB[0].petName));
-  $("#allPets").append("<div id=" + petDB[0].petID + ">");
-  $("#" + petDB[0].petID).append("<h3>" + petDB[0].petName);
-  $("#animal").attr("src",petDB[0].imageURL);
+  console.log(separateOnAvailability);
 
+  //display available pets
+
+  separateOnAvailability[0].forEach(function(pet)
+  {
+    $("#available").append("<div id=" + pet.petID + ">");
+    $("#" + pet.petID).append("<h3>" + pet.petName);
+    $("#animal").attr("src",pet.imageURL);
+  })
+  //display Adopted pets
+  separateOnAvailability[1].forEach(function(pet)
+  {
+    $("#adopted").append("<div id=" + pet.petID + ">");
+    $("#" + pet.petID).append("<h3>" + pet.petName);
+    $("#animal").attr("src",pet.imageURL);
+  })
 });
