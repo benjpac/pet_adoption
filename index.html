@@ -61,9 +61,9 @@ Users can view only animals that have already been adopted. -->
 
 
     <section class="text-center">
-      <button class="btn btn-success">All animals</button>
-      <button type="button" class="btn btn-success">Adopted</button>
-      <button type="button" class="btn btn-success">Waiting for love</button>
+      <button class="btn btn-success" id="all-animals">All animals</button>
+      <button type="button" class="btn btn-success" id="available">Waiting for Love</button>
+      <button type="button" class="btn btn-success" id="adopted">Adopted</button>
       <button type="button" class="btn btn-success" data-toggle="modal" data-target="#adoptform" data-whatever="@mdo">Donate a Pet</button>
 
       <div class="modal fade" id="adoptform" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -76,24 +76,23 @@ Users can view only animals that have already been adopted. -->
               </button>
             </div>
             <div class="modal-body">
-              <form>
+              <form id="donate-form">
                 <div class="form-group">
-                  <label for="recipient-name" class="form-control-label">Pet Name:</label>
-                  <input type="text" class="form-control" id="recipient-name">
+                  <label for="pet-name" class="form-control-label">Pet Name:</label>
+                  <input type="text" class="form-control" id="pet-name">
                 </div>
                 <div class="form-group">
-                  <label for="recipient-name" class="form-control-label">Pet Type:</label>
-                  <input type="text" class="form-control" id="recipient-name">
+                  <label for="pet-type" class="form-control-label">Pet Type:</label>
+                  <input type="text" class="form-control" id="pet-type">
                 </div>
                 <div class="form-group">
                   <label for="recipient-name" class="form-control-label">Image:</label>
-                  <input type="text" class="form-control" id="recipient-name">
+                  <input type="text" class="form-control" id="pet-url">
                 </div>
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Donate</button>
+              <button type="button" class="btn btn-primary" data-dismiss="modal" id="donate">Donate</button>
             </div>
           </div>
         </div>
@@ -101,298 +100,8 @@ Users can view only animals that have already been adopted. -->
     </section>
     <div class="album text-muted">
       <div class="container">
-        <div class="row" id="available">
-          <div class="card">
-            <img src="img/dog1.jpg" class="img-fluid">
+        <div class="row" id="display-pets">            
 
-            <!--Button trigger modal-->
-            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModalLong">
-              Meet Max
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Max</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <p>
-                      Favorite Food: Meatballs. <br>
-                      Favorite Friend: Pluto. <br>
-                      Favorite Hobbie: Salsa dancing.
-                    </p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Would you adopt me?</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="card">
-            <img src="img/dog2.jpg" alt="Card image cap" class="img-fluid">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModalLong">
-              Meet Jake
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Jake</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <p>
-                      Favorite Food: Meatballs. <br>
-                      Favorite Friend: Pluto. <br>
-                      Favorite Hobbie: Salsa dancing.
-                    </p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Would you adopt me?</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <img src="img/dog3.jpg" alt="Card image cap" class="img-fluid">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModalLong">
-              Meet Blue
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Blue</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <p>
-                      Favorite Food: Meatballs. <br>
-                      Favorite Friend: Pluto. <br>
-                      Favorite Hobbie: Salsa dancing.
-                    </p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Would you adopt me?</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card">
-            <img src="img/dog4.jpg" alt="Card image cap" class="img-fluid">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModalLong">
-              Meet Sky
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Sky</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <p>
-                      Favorite Food: Meatballs. <br>
-                      Favorite Friend: Pluto. <br>
-                      Favorite Hobbie: Salsa dancing.
-                    </p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Would you adopt me?</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <img src="img/dog5.jpg" alt="Card image cap" class="img-fluid">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModalLong">
-              Meet Nacho
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Nacho</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <p>
-                      Favorite Food: Meatballs. <br>
-                      Favorite Friend: Pluto. <br>
-                      Favorite Hobbie: Salsa dancing.
-                    </p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Would you adopt me?</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <img src="img/cat1.jpg" alt="Card image cap" class="img-fluid">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModalLong">
-              Meet Messi
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Messi</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <p>
-                      Favorite Food: Meatballs. <br>
-                      Favorite Friend: Pluto. <br>
-                      Favorite Hobbie: Salsa dancing.
-                    </p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Would you adopt me?</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <img src="img/cat2.jpg" alt="Card image cap" class="img-fluid">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModalLong">
-              Meet Neymar
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Neymar</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <p>
-                      Favorite Food: Meatballs. <br>
-                      Favorite Friend: Pluto. <br>
-                      Favorite Hobbie: Salsa dancing.
-                    </p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Would you adopt me?</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <img src="img/cat3.jpg" alt="Card image cap" class="img-fluid">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModalLong">
-              Meet Bob Marley
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Bob Marley</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <p>
-                      Favorite Food: Meatballs. <br>
-                      Favorite Friend: Pluto. <br>
-                      Favorite Hobbie: Salsa dancing.
-                    </p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Would you adopt me?</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <img src="img/cat4.jpg" alt="Card image cap" class="img-fluid">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModalLong">
-              Meet Scarface
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Scarface</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <p>
-                      Favorite Food: Meatballs. <br>
-                      Favorite Friend: Pluto. <br>
-                      Favorite Hobbie: Salsa dancing.
-                    </p>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Would you adopt me?</button>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

@@ -19,22 +19,57 @@ petDB = [
     "petID": 2,
     "petName": "Rose",
     "petType": "Cat",
-    "imageURL": "img/dog1.jpg",
+    "imageURL": "img/cat1.jpg",
     "available": true,
   },
   {
     "petID": 3,
-    "petName": "Max",
-    "petType": "Parrot",
-    "imageURL": "img/dog1.jpg",
+    "petName": "Sasha",
+    "petType": "Cat",
+    "imageURL": "img/cat2.jpg",
     "available": true,
   },
   {
     "petID": 4,
-    "petName": "Bella",
+    "petName": "Liz",
     "petType": "Cat",
-    "imageURL": "img/dog1.jpg",
+    "imageURL": "img/cat3.jpg",
+    "available": true,
+  },
+  {
+    "petID": 6,
+    "petName": "Bella",
+    "petType": "Dog",
+    "imageURL": "img/dog2.jpg",
     "available": false,
+  },
+  {
+    "petID": 7,
+    "petName": "Nacho",
+    "petType": "Dog",
+    "imageURL": "img/dog4.jpg",
+    "available": true,
+  },
+  {
+    "petID": 8,
+    "petName": "Max",
+    "petType": "Cat",
+    "imageURL": "img/dog5.jpg",
+    "available": true,
+  },
+  {
+    "petID": 9,
+    "petName": "Neymar",
+    "petType": "Cat",
+    "imageURL": "img/cat4.jpg",
+    "available": true,
+  },
+  {
+    "petID": 10,
+    "petName": "Sky",
+    "petType": "Dog",
+    "imageURL": "img/dog3.jpg",
+    "available": true,
   }
 ]
 
@@ -46,9 +81,6 @@ function AddAnimal(name, type, imageURL) {
   this.imageURL = imageURL;
   petDB.push(this);
 }
-
-var newPet = new AddAnimal("Alice", "Rabbit", "http://elelur.com/data_images/mammals/rabbit/rabbit-06.jpg");
-console.log(petDB);
 
 // function to split available pets and adopted ones in separate arrays
 function displayAdoptable(checkDB) {
@@ -69,8 +101,6 @@ function displayAdoptable(checkDB) {
   // checkDB[0] = availablePetDB, checkDB[1] = notAvailablePetDB
 }
 
-// console.log(displayAdoptable(petDB));
-
 // function to change petDB.avilable to false
 function adopted(pet) {
   pet.available = false;
@@ -79,7 +109,8 @@ function toDisplay(display)
 {
   display.forEach(function(pet)
   {
-    $("#available").append("<div class='card' id=" + pet.petID + ">" +
+    $("#display-pets").append(
+    "<div class='card' id=" + pet.petID + ">" +
     '<img src=' + pet.imageURL + ' class=img-fluid>'+
     '<button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModalLong">' + pet.petName + '</button>' +
       '<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">' +
@@ -100,7 +131,8 @@ function toDisplay(display)
           '</div>'+
           '<div class="modal-footer">'+
             '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>'+
-            '<button type="button" class="btn btn-primary">Would you adopt me?</button>'+
+            '<button type="button id="adopt-me"' +
+            'class="btn btn-primary">Would you adopt me?</button>'+
           '</div>'+
           '</div>'+
           '</div>' +
@@ -110,62 +142,40 @@ function toDisplay(display)
   });
 }
 
-// console.log(adopted(petDB[0]));
-// console.log(petDB);
+
 
 $(document).ready(function() {
+  toDisplay(petDB);
   var separateOnAvailability = displayAdoptable(petDB);
-  console.log(separateOnAvailability);
-  toDisplay(separateOnAvailability[0]);
-  $("#").click(function() {
+  $("#all-animals").click(function() {
+    $("#display-pets").empty();
     toDisplay(petDB);
-  })
-  $("#").click(function() {
+  });
+  $("#available").click(function() {
+    $("#display-pets").empty();
     toDisplay(separateOnAvailability[0]);
-  })
-  $("#").click(function() {
+  });
+  $("#adopted").click(function() {
+    $("#display-pets").empty();
     toDisplay(separateOnAvailability[1]);
-  })
-  $("#").click(function() {
-
-  })
-  //display available pets
-  // separateOnAvailability[0].forEach(function(pet)
-  // {
-  //   $("#available").append("<div class='card' id=" + pet.petID + ">" +
-  //   '<img src=' + pet.imageURL + ' class=img-fluid>'+
-  //   '<button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModalLong">' + pet.petName + '</button>' +
-  //     '<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">' +
-  //     '<div class="modal-dialog" role="document">' +
-  //       '<div class="modal-content">' +
-  //         '<div class="modal-header">' +
-  //           '<h5 class="modal-title" id="exampleModalLongTitle">' + pet.petName + '</h5>' +
-  //           '<button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
-  //             '<span aria-hidden="true">&times;</span>' +
-  //           '</button>' +
-  //         '</div>' +
-  //         '<div class="modal-body">' +
-  //           '<p>' +
-  //             'Favorite Food: Meatballs. <br>' +
-  //             'Favorite Friend: Pluto. <br>' +
-  //             'Favorite Hobbie: Salsa dancing.'+
-  //           '</p>'+
-  //         '</div>'+
-  //         '<div class="modal-footer">'+
-  //           '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>'+
-  //           '<button type="button" class="btn btn-primary">Would you adopt me?</button>'+
-  //         '</div>'+
-  //         '</div>'+
-  //         '</div>' +
-  //         '</div>' +
-  //         '</div>'
-  //       )
+  });
+  // $("#adopt-me").click(function() {
+  //   // $(event.currentTarget).attr('id');
+  //   // var clickId = event.currentTarget.id;
+  //   // console.log(clickId);
+  //
+  //   adopted();
   // });
-  //display Adopted pets
-  // separateOnAvailability[1].forEach(function(pet)
-  // {
-  //   $("#adopted").append("<div id=" + pet.petID + ">");
-  //   $("#" + pet.petID).append("<h3>" + pet.petName);
-  //   $("#animal").attr("src",pet.imageURL);
-  // })
+
+  $("#donate").click(function() {
+
+    var name = $("#pet-name").val();
+    var type = $("#pet-type").val();
+    var url = $("#pet-url").val();
+    var newPet = new AddAnimal(name, type, url);
+    separateOnAvailability = displayAdoptable(petDB);
+    $('#donate-form')[0].reset();
+
+  });
+
 });
