@@ -22,7 +22,6 @@ Users can view only animals that have already been adopted. -->
     <script type="text/javascript" src="js/scripts.js"></script>
   </head>
   <body>
-<<<<<<< HEAD
     <div class="collapse bg-inverse" id="navbarHeader">
       <div class="container">
         <div class="row">
@@ -60,6 +59,46 @@ Users can view only animals that have already been adopted. -->
       </div>
     </section>
 
+
+    <section class="text-center">
+      <button class="btn btn-success">All animals</button>
+      <button type="button" class="btn btn-success">Adopted</button>
+      <button type="button" class="btn btn-success">Waiting for love</button>
+      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#adoptform" data-whatever="@mdo">Donate a Pet</button>
+
+      <div class="modal fade" id="adoptform" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header text-center">
+              <h5 class="modal-title" id="exampleModalLabel">About your pet:</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="recipient-name" class="form-control-label">Pet Name:</label>
+                  <input type="text" class="form-control" id="recipient-name">
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="form-control-label">Pet Type:</label>
+                  <input type="text" class="form-control" id="recipient-name">
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="form-control-label">Image:</label>
+                  <input type="text" class="form-control" id="recipient-name">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Donate</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <div class="album text-muted">
       <div class="container">
 
