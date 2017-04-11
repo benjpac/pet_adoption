@@ -109,7 +109,7 @@ function displayAdoptable(checkDB) {
 function adopted(pet) {
   if (pet.available === false)
   {
-    alert("sorry, that bet is not available");
+    alert("sorry, that pet is not available");
   }
   else
   {
@@ -124,8 +124,8 @@ function toDisplay(display)
     $("#display-pets").append(
     "<div class='card' id=" + pet.petID + ">" +
       '<img src=' + pet.imageURL + ' class=img-fluid>'+
-      '<button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModalLong">' + pet.petName + '</button>' +
-      '<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">' +
+      '<button type="button" class="btn btn-link" data-toggle="modal" data-target=#exampleModalLong' + pet.petID + '>' + pet.petName + '</button>' +
+      '<div class="modal fade" id=exampleModalLong' + pet.petID + ' tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">' +
         '<div class="modal-dialog" role="document">' +
           '<div class="modal-content">' +
             '<div class="modal-header">' +
@@ -142,7 +142,7 @@ function toDisplay(display)
               '</p>'+
             '</div>'+
             '<div class="modal-footer">'+
-              '<button type="button" class="btn btn-primary" id=adopt-me>Would you adopt me?</button>' +
+              '<button type="button" class="btn btn-primary" id="adopt-me">Would you adopt me?</button>' +
             '</div>'+
           '</div>'+
         '</div>'+
