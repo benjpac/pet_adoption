@@ -142,7 +142,7 @@ function toDisplay(display)
               '</p>'+
             '</div>'+
             '<div class="modal-footer">'+
-              '<button type="button" class="btn btn-primary" id=' + "adopt-me-" + pet.petID + '>Would you adopt me?</button>' +
+              '<button type="button" class="btn btn-primary" id=adopt-me>Would you adopt me?</button>' +
             '</div>'+
           '</div>'+
         '</div>'+
@@ -169,7 +169,7 @@ $(document).ready(function() {
   $("#adopted").click(function() {
     resetAndDisplay(separateOnAvailability[1]);
   });
-  $("#adopt-me-").click(function() {
+  $("#adopt-me").click(function() {
     var clickedID = $(this).parents().eq(4).attr("id") -1;
     console.log(clickedID)
     adopted(petDB[clickedID]);
