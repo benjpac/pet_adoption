@@ -73,6 +73,8 @@ petDB = [
   }
 ]
 
+var separateOnAvailability = [];
+
 function AddAnimal(name, type, imageURL) {
   this.petID = petDB.length + 1;
   this.petName = name;
@@ -105,6 +107,7 @@ function displayAdoptable(checkDB) {
 function adopted(pet) {
   pet.available = false;
 }
+
 function toDisplay(display)
 {
   display.forEach(function(pet)
@@ -130,52 +133,47 @@ function toDisplay(display)
             '</p>'+
           '</div>'+
           '<div class="modal-footer">'+
-            '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>'+
-            '<button type="button id="adopt-me"' +
-            'class="btn btn-primary">Would you adopt me?</button>'+
+            '<button type="button"' +
+            'class="btn btn-primary">Would you adopt me?</button>' +
           '</div>'+
           '</div>'+
-          '</div>' +
-          '</div>' +
+          '</div>'+
+          '</div>'+
           '</div>'
-        )
+        );
   });
 }
 
-
+function resetAndDisplay(pets) {
+  $("#display-pets").empty();
+  separateOnAvailability = displayAdoptable(petDB);
+  toDisplay(pets);
+}
 
 $(document).ready(function() {
-  toDisplay(petDB);
-  var separateOnAvailability = displayAdoptable(petDB);
+  resetAndDisplay(petDB);
   $("#all-animals").click(function() {
-    $("#display-pets").empty();
-    toDisplay(petDB);
+    resetAndDisplay(petDB);
   });
   $("#available").click(function() {
-    $("#display-pets").empty();
-    toDisplay(separateOnAvailability[0]);
+    resetAndDisplay(separateOnAvailability[0]);
   });
   $("#adopted").click(function() {
-    $("#display-pets").empty();
-    toDisplay(separateOnAvailability[1]);
+    resetAndDisplay(separateOnAvailability[1]);
   });
-  // $("#adopt-me").click(function() {
-  //   // $(event.currentTarget).attr('id');
-  //   // var clickId = event.currentTarget.id;
-  //   // console.log(clickId);
-  //
-  //   adopted();
-  // });
+  $(this).click(function() {
+    var clickedID = $(this).parents().eq(4).attr("id") -1;
+    console.log(clickedID)
+    adopted(petDB[clickedID]);
+    console.log(petDB[clickedID])
+  });
 
   $("#donate").click(function() {
-
     var name = $("#pet-name").val();
     var type = $("#pet-type").val();
     var url = $("#pet-url").val();
     var newPet = new AddAnimal(name, type, url);
-    separateOnAvailability = displayAdoptable(petDB);
+    resetAndDisplay(petDB);
     $('#donate-form')[0].reset();
-
   });
-
 });
