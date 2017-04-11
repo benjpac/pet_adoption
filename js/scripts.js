@@ -82,6 +82,8 @@ function AddAnimal(name, type, imageURL) {
   this.available = true;
   this.imageURL = imageURL;
   petDB.push(this);
+  console.log(this);
+  console.log(petDB);
 }
 
 // function to split available pets and adopted ones in separate arrays
@@ -105,7 +107,14 @@ function displayAdoptable(checkDB) {
 
 // function to change petDB.avilable to false
 function adopted(pet) {
-  pet.available = false;
+  if (pet.available === false)
+  {
+    alert("sorry, that bet is not available");
+  }
+  else
+  {
+    pet.available = false;
+  }
 }
 
 function toDisplay(display)
@@ -114,34 +123,33 @@ function toDisplay(display)
   {
     $("#display-pets").append(
     "<div class='card' id=" + pet.petID + ">" +
-    '<img src=' + pet.imageURL + ' class=img-fluid>'+
-    '<button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModalLong">' + pet.petName + '</button>' +
+      '<img src=' + pet.imageURL + ' class=img-fluid>'+
+      '<button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModalLong">' + pet.petName + '</button>' +
       '<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">' +
-      '<div class="modal-dialog" role="document">' +
-        '<div class="modal-content">' +
-          '<div class="modal-header">' +
-            '<h5 class="modal-title" id="exampleModalLongTitle">' + pet.petName + '</h5>' +
-            '<button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
-              '<span aria-hidden="true">&times;</span>' +
-            '</button>' +
-          '</div>' +
-          '<div class="modal-body">' +
-            '<p>' +
-              'Favorite Food: Meatballs. <br>' +
-              'Favorite Friend: Pluto. <br>' +
-              'Favorite Hobbie: Salsa dancing.'+
-            '</p>'+
+        '<div class="modal-dialog" role="document">' +
+          '<div class="modal-content">' +
+            '<div class="modal-header">' +
+              '<h5 class="modal-title" id="exampleModalLongTitle">' + pet.petName + '</h5>' +
+              '<button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
+                '<span aria-hidden="true">&times;</span>' +
+              '</button>' +
+            '</div>' +
+            '<div class="modal-body">' +
+              '<p>' +
+                'Favorite Food: Meatballs. <br>' +
+                'Favorite Friend: Pluto. <br>' +
+                'Favorite Hobbie: Salsa dancing.'+
+              '</p>'+
+            '</div>'+
+            '<div class="modal-footer">'+
+              '<button type="button" class="btn btn-primary" id=' + "adopt-me-" + pet.petID + '>Would you adopt me?</button>' +
+            '</div>'+
           '</div>'+
-          '<div class="modal-footer">'+
-            '<button type="button"' +
-            'class="btn btn-primary">Would you adopt me?</button>' +
-          '</div>'+
-          '</div>'+
-          '</div>'+
-          '</div>'+
-          '</div>'
-        );
-  });
+        '</div>'+
+      '</div>'+
+    '</div>'
+    )
+  })
 }
 
 function resetAndDisplay(pets) {
@@ -161,7 +169,7 @@ $(document).ready(function() {
   $("#adopted").click(function() {
     resetAndDisplay(separateOnAvailability[1]);
   });
-  $(this).click(function() {
+  $("#adopt-me-").click(function() {
     var clickedID = $(this).parents().eq(4).attr("id") -1;
     console.log(clickedID)
     adopted(petDB[clickedID]);
